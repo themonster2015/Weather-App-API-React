@@ -1,4 +1,8 @@
+### A Weather App That Fetch from Remote API - Built with React
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+You can view the project live at [Weather Consultation React App](weather-consult-react-yen.netlify.com)
 
 ## Available Scripts
 
