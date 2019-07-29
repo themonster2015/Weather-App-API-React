@@ -12,7 +12,7 @@ class WeatherInfo extends Component {
       humidity: null,
       pressure: null,
       temp: null,
-      tempC: null,
+
       loaded: false,
       error: false
     };
@@ -21,21 +21,19 @@ class WeatherInfo extends Component {
   fetchData(city) {
     const APIKEY = "3df4d45774f543d9e93f625e71e98991";
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${APIKEY}`
+      `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${APIKEY}`
     )
       .then(res => {
         return res.json();
       })
       .then(res => {
         console.log(res);
-        let tempc = this.toCelcius(res.main.temp);
         if (res.cod === 200) {
           this.setState({
             wind: res.wind.speed,
             humidity: res.main.humidity,
             pressure: res.main.pressure,
             temp: res.main.temp,
-            tempC: tempc,
             loaded: true,
             error: false
           });
@@ -74,9 +72,7 @@ class WeatherInfo extends Component {
           {this.state.loaded && <Wind wind={this.state.wind} />}
           {this.state.loaded && <Humidity humidity={this.state.humidity} />}
           {this.state.loaded && <AirPressure pressure={this.state.pressure} />}
-          {this.state.loaded && (
-            <Temp temp={this.state.temp} tempC={this.state.tempC} />
-          )}
+          {this.state.loaded && <Temp temp={this.state.temp} />}
           {this.state.error && <h1>City Not Found!</h1>}
         </section>
       </>
