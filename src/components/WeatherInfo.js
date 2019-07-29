@@ -21,7 +21,9 @@ class WeatherInfo extends Component {
   fetchData(city) {
     const APIKEY = "3df4d45774f543d9e93f625e71e98991";
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${APIKEY}`
+
+      `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${APIKEY}`,{mode: 'cors'}
+
     )
       .then(res => {
         return res.json();
